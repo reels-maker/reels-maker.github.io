@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>reels-maker - монтаж Reels по вашему описанию</title>
-<meta name="description" content="Загрузите видео и напишите, что хотите получить. Через несколько минут - готовый вертикальный ролик для Reels, TikTok, VK Клипов и Shorts.">
+<meta name="description" content="Загрузите видео и напишите, что хотите получить. Через несколько минут - готовый Reels с субтитрами, музыкой и без пауз.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -441,7 +441,7 @@
     <div class="wrap">
       <div class="eyebrow" data-reveal>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.8L20 10l-5 3.6L16.5 20 12 16.6 7.5 20 9 13.6 4 10l6.1-1.2z"/></svg>
-        AI-монтаж для Reels, TikTok и YouTube Shorts
+        AI-монтаж для Instagram Reels
       </div>
       <h1 data-reveal style="--d:.1s">
         Превратите любое видео
@@ -515,7 +515,7 @@
 
   <!-- PLATFORMS -->
   <div class="platforms">
-    <p data-reveal>Готовые ролики для всех вертикальных площадок</p>
+    <p data-reveal>Всё, что нужно хорошему Reels</p>
     <div class="pm"><div class="pm-track" id="pm"></div></div>
   </div>
 
@@ -600,7 +600,7 @@
 
         <div class="card" data-reveal style="--d:.2s; --tint:#173a33">
           <div class="vis"><div class="reframe"><div class="rf"></div><div class="rf-l"><b>16:9</b> → <b>9:16</b></div></div></div>
-          <div class="txt"><h3>Вертикальный формат</h3><p>Любое видео превращается в 9:16 для Reels, TikTok, VK Клипов и Shorts.</p></div>
+          <div class="txt"><h3>Вертикальный формат</h3><p>Любое видео превращается в вертикальный 9:16 - как раз для Reels.</p></div>
         </div>
 
         <div class="card" data-reveal style="--tint:#2a1a3f">
@@ -701,7 +701,7 @@
 (() => {
   /* Order bot link: set to the Telegram bot URL (e.g. https://t.me/your_bot) once it exists.
      Empty = order buttons scroll to the final CTA block. */
-  const ORDER_URL = '';
+  const ORDER_URL = 'https://t.me/reels_maker_ai?direct';
   if (ORDER_URL) document.querySelectorAll('[data-order]').forEach(a => { a.href = ORDER_URL; a.target = '_blank'; a.rel = 'noopener'; });
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -729,7 +729,7 @@
   }
 
   /* rotating word pill */
-  const words = ['вирусный Reels', 'ролик с субтитрами', 'TikTok без пауз', 'VK Клип с музыкой', 'Shorts с хуком'];
+  const words = ['вирусный Reels', 'Reels с субтитрами', 'Reels без пауз', 'Reels с музыкой', 'Reels с мемами'];
   const pill = document.getElementById('pill');
   const measure = document.createElement('span'); measure.className = 'measure'; pill.parentNode.appendChild(measure);
   const widthOf = w => { measure.textContent = w; return measure.getBoundingClientRect().width; };
@@ -794,7 +794,7 @@
   setChip(0); autoChips();
 
   /* platforms marquee */
-  const plats = ['Instagram Reels', 'TikTok', 'VK Клипы', 'YouTube Shorts', 'Telegram', 'Дзен', 'Likee'];
+  const plats = ['Без пауз', 'Субтитры', 'Мемы', 'Музыка', 'Хук', 'Вставки', 'Анимация', '9:16'];
   document.getElementById('pm').innerHTML = [...plats, ...plats, ...plats, ...plats].map(p => `<span>${p}</span>`).join('');
 
   /* karaoke word highlight */
