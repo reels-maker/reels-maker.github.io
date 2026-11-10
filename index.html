@@ -419,7 +419,7 @@
 </head>
 <body>
 
-<div class="bar" id="top"><a href="#start">🚀 Скоро запуск - первые ролики смонтируем бесплатно →</a></div>
+<div class="bar" id="top"><a href="#start" data-order>🚀 Скоро запуск - первые ролики смонтируем бесплатно →</a></div>
 
 <header>
   <div class="wrap nav">
@@ -693,7 +693,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 reels-maker</span>
-    <span><a href="#top">Наверх ↑</a></span>
+    <span><a href="#start" data-order>Telegram-бот</a> &nbsp;·&nbsp; <a href="#top">Наверх ↑</a></span>
   </div>
 </footer>
 
@@ -701,7 +701,7 @@
 (() => {
   /* Order bot link: set to the Telegram bot URL (e.g. https://t.me/your_bot) once it exists.
      Empty = order buttons scroll to the final CTA block. */
-  const ORDER_URL = 'https://t.me/reels_maker_ai?direct';
+  const ORDER_URL = 'https://t.me/reels_maker_ai_agent';
   if (ORDER_URL) document.querySelectorAll('[data-order]').forEach(a => { a.href = ORDER_URL; a.target = '_blank'; a.rel = 'noopener'; });
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
