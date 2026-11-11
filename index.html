@@ -798,19 +798,24 @@
   const setWidth = w => { pill.style.width = widthOf(w) + 'px'; };
   document.fonts.ready.then(() => setWidth(words[0]));
   addEventListener('resize', () => setWidth(words[wi]));
-  const rotate = () => {
-    const cur = pill.querySelector('.word');
+  // Chained timeouts (not setInterval): background tabs batch throttled timers, and overlapping
+  // swaps used to leave two words stacked in the pill. Each swap schedules the next one.
+  const scheduleRotate = ms => setTimeout(rotate, ms);
+  function rotate() {
+    if (document.hidden) return scheduleRotate(1000); // pause while the tab is in background
     wi = (wi + 1) % words.length;
-    cur.classList.add('out');
+    pill.querySelectorAll('.word').forEach(w => w.classList.add('out'));
     setTimeout(() => {
+      pill.querySelectorAll('.word').forEach(w => w.remove());
       const nw = document.createElement('span'); nw.className = 'word pre'; nw.textContent = words[wi];
-      cur.remove(); pill.appendChild(nw); setWidth(words[wi]);
+      pill.appendChild(nw); setWidth(words[wi]);
       void nw.offsetWidth; // flush styles so the transition from .pre runs
       nw.classList.remove('pre');
+      scheduleRotate(2600);
     }, 420);
-  };
+  }
   // keep the first word ("вирусный Reels") on screen longer, then rotate
-  if (!reduce) setTimeout(() => { rotate(); setInterval(rotate, 2600); }, 4500);
+  if (!reduce) scheduleRotate(4500);
 
   /* typewriter prompt */
   const wishes = [
@@ -837,7 +842,7 @@
     ['✂️', 'Удаление пауз', 'Вырезаем тишину и «эээ» - ролик становится плотнее.'],
     ['💬', 'Субтитры', 'Слово за словом, с подсветкой активного слова.'],
     ['📱', 'Формат 9:16', 'Кадрируем под вертикальный экран.'],
-    ['🎵', 'Музыка', 'Подбираем трек под настроение и приглушаем под голос.'],
+    ['🎵', 'Музыка', 'Подбираем трек под настроение.'],
     ['🪝', 'Хук', 'Цепляющий звук на первых секундах.'],
     ['😂', 'Мемы', 'Мемы на ключевых словах и смешных моментах.'],
   ];
